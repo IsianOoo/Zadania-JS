@@ -50,10 +50,9 @@ const channels = {
 let isPlaying = false
 let intervalId
 
-
 document.getElementById('startStopButton').addEventListener('click', toggleMetronome)
 
-function onKeyPress(event) {
+const onKeyPress = (event) => {
 	const sound = KeyToSound[event.key]
 	playSound(sound)
 
@@ -64,14 +63,14 @@ function onKeyPress(event) {
 	}
 }
 
-function playSound(sound) {
+const playSound = (sound) => {
 	if (sound) {
 		sound.currentTime = 0
 		sound.play()
 	}
 }
 
-function toggleMetronome() {
+const toggleMetronome = () => {
 	if (isPlaying) {
 		stopMetronome()
 	} else {
@@ -79,7 +78,7 @@ function toggleMetronome() {
 	}
 }
 
-function startMetronome() {
+const startMetronome = () => {
 	const bpmInput = document.getElementById('bpmInput')
 	const bpm = parseInt(bpmInput.value, 10)
 
@@ -100,31 +99,31 @@ function startMetronome() {
 	bpmInput.disabled = true
 }
 
-function stopMetronome() {
+const stopMetronome = () => {
 	clearInterval(intervalId)
 	isPlaying = false
 	document.getElementById('startStopButton').textContent = 'Start'
 	document.getElementById('bpmInput').disabled = false
 }
 
-function startRec(channelNumber) {
+const startRec = (channelNumber) => {
 	const channel = channels[channelNumber]
 	channel.isRec = true
 	channel.recSounds = []
 }
 
-function stopRec(channelNumber) {
+const stopRec = (channelNumber) => {
 	const channel = channels[channelNumber]
 	channel.isRec = false
 }
 
-function playRec(channelNumber) {
+const playRec = (channelNumber) => {
 	const channel = channels[channelNumber]
 	channel.channel.src = ''
 	playRecHelper(channel)
 }
 
-function playRecHelper(channel) {
+const playRecHelper = (channel) => {
 	channel.recSounds.forEach((rec, index) => {
 		setTimeout(
 			() => {
@@ -150,9 +149,9 @@ for (let i = 1; i <= Object.keys(channels).length; i++) {
 	channel.playButton.addEventListener('click', () => playRec(channelNumber))
 }
 
-function playAll() {
+const playAll = () => {
 	for (const [channelNumber, channel] of Object.entries(channels)) {
-	  playRecHelper(channel);
+		playRecHelper(channel)
 	}
-  }
+}
 document.getElementById('playAll').addEventListener('click', playAll)

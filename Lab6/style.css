@@ -1,0 +1,21 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  canvas {
+    display: block;
+  }
+  
+  .buttons {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  
+  button {
+    margin-right: 10px;
+  }
+  

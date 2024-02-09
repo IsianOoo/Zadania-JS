@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>WeatherApp</title>
+</head>
+
+<body>
+
+    <div class="container">
+		<header>
+			<h1>WeatherApp</h1>
+
+			<form id="search-form">
+				<label for="search-term">City name</label>
+
+				<div class="form-row">
+					<input type="text" placeholder="e.g. Barcelona" name="search-term" id="search-term" autofocus>
+
+					<button type="submit">
+						Add
+					</button>
+				</div> 
+
+				<p class="form-msg"></p>
+			</form>
+		</header>
+
+		<section>
+			<ul class="cities">
+			</ul>
+		</section>
+
+		
+	</div>
+    
+    <script src="./script.js"></script>
+</body>
+
+</html>
