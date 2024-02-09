@@ -21,6 +21,9 @@ form.addEventListener('submit', (e) => {
 	if (!inputVal) return
 
 	let cities = JSON.parse(localStorage.getItem('cities')) || []
+    console.log(cities.includes(inputVal.toLowerCase()));
+    console.log(cities);
+    console.log(inputVal.toLowerCase());
 
 	if (cities.includes(inputVal.toLowerCase())) {
 		msg.textContent = `You already know the weather for ${inputVal}... Otherwise, be more specific by providing the country code as well 😉`
@@ -42,7 +45,7 @@ form.addEventListener('submit', (e) => {
 		return
 	}
 
-	const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKey}&units=metric`
+	const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&lang=en&appid=${apiKey}&units=metric`
 
 	fetch(url)
 		.then((response) => response.json())
@@ -95,7 +98,8 @@ list.addEventListener('click', (e) => {
 })
 
 function addCityToDom(cityName) {
-	const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`
+	const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&lang=en&appid=${apiKey}&units=metric`
+   
 
 	fetch(url)
 		.then((response) => response.json())
